@@ -1,0 +1,20 @@
+{
+  "name": "abdul-kadir-mohiuddin-identity",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile-first personal identity website and NFC business card for Abdul Kadir Mohiuddin",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "serve": "python3 -m http.server 3000",
+    "preview": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "nfc-card",
+    "digital-business-card",
+    "personal-branding",
+    "liquid-glass",
+    "creative-visualizer"
+  ],
+  "author": "Abdul Kadir Mohiuddin"
+}

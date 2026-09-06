@@ -1,0 +1,160 @@
+/* ==========================================================================
+   CAPABILITIES Section — Spacious Editorial Direction
+   ========================================================================== */
+
+.capabilities-section {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 860px;
+  margin-inline: auto;
+  padding: clamp(60px, 10vh, 120px) 20px clamp(90px, 14vh, 150px) 20px;
+  color: var(--color-text-primary);
+  contain: paint;
+}
+
+/* ==========================================================================
+   Section Header
+   ========================================================================== */
+.capabilities-header {
+  margin-bottom: clamp(48px, 8vh, 80px);
+}
+
+.capabilities-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-title);
+  opacity: 0.75;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.capabilities-headline {
+  font-size: clamp(2.4rem, 6.2vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Spacious Editorial Capabilities List (No Heavy Cards)
+   ========================================================================== */
+.capabilities-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 7vh, 68px);
+  list-style: none;
+}
+
+.capability-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: clamp(32px, 5vh, 52px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  transition: transform 260ms var(--ease-spring);
+}
+
+.capability-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Luminous subtle border glow on hover/active */
+.capability-row::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(167, 139, 250, 0.8) 0%,
+    rgba(217, 70, 239, 0.6) 100%
+  );
+  transition: width 380ms var(--ease-spring);
+}
+
+.capability-row:hover::after {
+  width: 100%;
+}
+
+.capability-row:hover {
+  transform: translateX(8px);
+}
+
+/* Header: Index & Large Editorial Title */
+.capability-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.capability-index {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--color-accent-title);
+  opacity: 0.65;
+  user-select: none;
+}
+
+.capability-title {
+  font-size: clamp(1.75rem, 4.2vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #FFFFFF;
+  transition: text-shadow 240ms ease;
+}
+
+.capability-row:hover .capability-title {
+  text-shadow: 0 0 28px rgba(196, 181, 253, 0.35);
+}
+
+/* Direct Editorial Description */
+.capability-desc {
+  font-size: clamp(1.02rem, 2.2vw, 1.22rem);
+  line-height: 1.64;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  max-width: 680px;
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (min-width: 768px) {
+  .capabilities-section {
+    padding-inline: 36px;
+  }
+
+  .capability-header {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 20px;
+  }
+
+  .capability-index {
+    min-width: 32px;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .capability-row {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .capability-row::after {
+    display: none !important;
+  }
+}

@@ -1,0 +1,328 @@
+/* ==========================================================================
+   CONTACT Section — Minimal Editorial Conversion Climax
+   ========================================================================== */
+
+.contact-section {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 860px;
+  margin-inline: auto;
+  padding: clamp(60px, 10vh, 120px) 20px clamp(80px, 12vh, 140px) 20px;
+  color: var(--color-text-primary);
+  contain: paint;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   Section Header
+   ========================================================================== */
+.contact-header {
+  margin-bottom: clamp(36px, 6vh, 56px);
+}
+
+.contact-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-title);
+  opacity: 0.75;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.contact-headline {
+  font-size: clamp(2.4rem, 6.2vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.contact-subtext {
+  font-size: clamp(1.04rem, 2.3vw, 1.24rem);
+  line-height: 1.62;
+  color: var(--color-text-secondary);
+  max-width: 620px;
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   One Dominant Glass CTA Surface
+   ========================================================================== */
+.contact-glass-surface {
+  position: relative;
+  width: 100%;
+  padding: clamp(26px, 5.5vw, 44px);
+  border-radius: var(--radius-card, 32px);
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  transition: transform 320ms var(--ease-spring), border-color 320ms ease;
+  --contact-sheen-x: 50%;
+  --contact-sheen-y: 20%;
+}
+
+.contact-glass-surface:hover {
+  border-color: var(--glass-border-highlight);
+}
+
+/* Dynamic Specular Sheen Refraction */
+.contact-glass-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 360px at var(--contact-sheen-x) var(--contact-sheen-y),
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(196, 181, 253, 0.04) 40%,
+    transparent 70%
+  );
+  transition: opacity 300ms ease;
+}
+
+/* ==========================================================================
+   Primary WhatsApp CTA — The Strongest Action
+   ========================================================================== */
+.contact-cta-whatsapp {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: clamp(54px, 7vh, 62px);
+  border-radius: var(--radius-button, 16px);
+  background: var(--color-whatsapp-bg, #25D366);
+  color: var(--color-whatsapp-text, #051A0E);
+  font-weight: 700;
+  font-size: clamp(1rem, 2.2vw, 1.08rem);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  box-shadow: 0 10px 28px -4px rgba(37, 211, 102, 0.38);
+  transition: transform 220ms var(--ease-spring), box-shadow 220ms ease, background 220ms ease;
+  animation: ctaAmbientAura 4.8s ease-in-out infinite alternate;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.contact-cta-whatsapp::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 80%
+  );
+  transform: translateX(-100%);
+  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.contact-cta-whatsapp:hover::before,
+.contact-cta-whatsapp:focus-visible::before {
+  transform: translateX(100%);
+}
+
+.contact-cta-whatsapp:hover {
+  background: var(--color-whatsapp-hover, #29E06E);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 14px 36px -4px rgba(37, 211, 102, 0.52);
+}
+
+.contact-cta-whatsapp:active {
+  transform: scale(0.985);
+  box-shadow: 0 6px 16px -2px rgba(37, 211, 102, 0.4);
+  transition-duration: 90ms;
+}
+
+.whatsapp-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   Secondary Actions: Call & Email
+   ========================================================================== */
+.contact-secondary-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.contact-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 220ms ease, border-color 220ms ease, transform 220ms var(--ease-spring);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.contact-action-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+.contact-action-btn:active {
+  transform: scale(0.98);
+}
+
+.contact-action-btn svg {
+  opacity: 0.85;
+}
+
+/* Subtle Card Divider */
+.contact-card-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.09) 25%,
+    rgba(255, 255, 255, 0.09) 75%,
+    transparent 100%
+  );
+  margin-block: 28px 24px;
+}
+
+/* ==========================================================================
+   Understated Social Links
+   ========================================================================== */
+.contact-social-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.social-row-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-title);
+  opacity: 0.65;
+  user-select: none;
+}
+
+.contact-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: background 200ms ease, border-color 200ms ease, transform 200ms var(--ease-spring), color 200ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.contact-social-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(196, 181, 253, 0.4);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.contact-social-btn:active {
+  transform: scale(0.95);
+}
+
+.contact-social-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   Footer Identity Block
+   ========================================================================== */
+.contact-footer-identity {
+  margin-top: clamp(64px, 10vh, 100px);
+  padding-top: 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: max(32px, env(safe-area-inset-bottom, 24px));
+}
+
+.footer-identity-name {
+  font-size: clamp(1rem, 2.4vw, 1.28rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.footer-identity-role {
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-title);
+  opacity: 0.72;
+}
+
+.footer-identity-meta {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.55;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Accessibility: Reduced Motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .contact-glass-surface,
+  .contact-cta-whatsapp,
+  .contact-action-btn,
+  .contact-social-btn {
+    transform: none !important;
+    transition: none !important;
+  }
+}

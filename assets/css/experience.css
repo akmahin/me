@@ -1,0 +1,286 @@
+/* ==========================================================================
+   EXPERIENCE Section — Minimal Vertical Editorial Timeline
+   ========================================================================== */
+
+.experience-section {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 860px;
+  margin-inline: auto;
+  padding: clamp(60px, 10vh, 120px) 20px clamp(90px, 14vh, 150px) 20px;
+  color: var(--color-text-primary);
+  contain: paint;
+}
+
+/* ==========================================================================
+   Section Header
+   ========================================================================== */
+.experience-header {
+  margin-bottom: clamp(48px, 8vh, 80px);
+}
+
+.experience-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-title);
+  opacity: 0.75;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.experience-headline {
+  font-size: clamp(2.4rem, 6.2vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Editorial Vertical Timeline
+   ========================================================================== */
+.experience-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(44px, 7vh, 64px);
+  padding-left: 36px;
+  list-style: none;
+}
+
+/* Vertical Guide Spine */
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  bottom: 28px;
+  left: 7px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(167, 139, 250, 0.65) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  pointer-events: none;
+}
+
+/* Single Timeline Entry */
+.experience-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  margin: -16px -20px;
+  border-radius: 18px;
+  transition: background 280ms ease, transform 280ms var(--ease-spring);
+}
+
+/* Subtle Liquid Glass on hover / focus */
+.experience-item:hover {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateX(6px);
+}
+
+/* Timeline Node */
+.timeline-node {
+  position: absolute;
+  top: 24px;
+  left: -29px; /* Centered precisely on the 7px guide line */
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.timeline-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 240ms ease, background 240ms ease, box-shadow 240ms ease;
+}
+
+.experience-item:hover .timeline-dot {
+  transform: scale(1.25);
+  background: #FFFFFF;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Active / Current Role Indicator Node */
+.timeline-node--active .timeline-dot {
+  background: var(--color-status-active, #10B981);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.timeline-pulse-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(16, 185, 129, 0.55);
+  animation: breathingPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes breathingPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+/* ==========================================================================
+   Experience Content Architecture
+   ========================================================================== */
+.experience-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Meta Bar: Period & Location */
+.experience-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  user-select: none;
+}
+
+.experience-period {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.experience-period--active {
+  color: #A7F3D0;
+}
+
+.active-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  display: inline-block;
+}
+
+.meta-sep {
+  opacity: 0.3;
+}
+
+.experience-location {
+  color: var(--color-text-muted);
+}
+
+/* Organization Title */
+.experience-org {
+  font-size: clamp(1.45rem, 3.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  transition: color 240ms ease;
+}
+
+.experience-item:hover .experience-org {
+  color: #FFFFFF;
+}
+
+/* Roles Typography */
+.experience-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.experience-role-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: clamp(0.96rem, 2.1vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--color-accent-title);
+  line-height: 1.35;
+}
+
+.role-accent-marker {
+  font-size: 0.85rem;
+  opacity: 0.55;
+  color: var(--color-accent-title);
+}
+
+/* Concise Editorial Description */
+.experience-desc {
+  font-size: clamp(0.95rem, 2vw, 1.08rem);
+  line-height: 1.62;
+  color: var(--color-text-secondary);
+  max-width: 660px;
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (min-width: 768px) {
+  .experience-section {
+    padding-inline: 36px;
+  }
+
+  .experience-timeline {
+    padding-left: 48px;
+  }
+
+  .experience-timeline::before {
+    left: 11px;
+  }
+
+  .timeline-node {
+    left: -37px;
+  }
+
+  .experience-item {
+    padding: 20px 24px;
+    margin: -20px -24px;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .experience-item {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .timeline-pulse-ring {
+    animation: none !important;
+    opacity: 0.4 !important;
+  }
+}

@@ -1,0 +1,390 @@
+/* ==========================================================================
+   Mobile-First Layout & NFC Business Card Core
+   ========================================================================== */
+
+/* Page Viewport Shell */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--sat) + 12px) 16px calc(var(--sab) + 16px) 16px;
+  z-index: 1;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   Header Bar
+   ========================================================================== */
+.nfc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 4px 10px 4px;
+}
+
+.status-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-chip);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   Primary Liquid-Glass Identity Card
+   ========================================================================== */
+.nfc-card {
+  position: relative;
+  width: 100%;
+  background: var(--color-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-card);
+  padding: 24px 20px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  overflow: hidden;
+  margin: auto 0;
+}
+
+/* Luminous Fine Gradient Border */
+.nfc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  padding: 1px;
+  background: var(--glass-card-border-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dynamic Interactive Specular Sheen (Reacts to pointer/touch) */
+.nfc-card-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: var(--radius-card);
+  background: radial-gradient(
+    550px circle at var(--sheen-x, 50%) var(--sheen-y, 20%),
+    rgba(255, 255, 255, 0.07),
+    rgba(147, 51, 234, 0.04) 40%,
+    transparent 80%
+  );
+  z-index: 2;
+  transition: opacity 300ms ease;
+}
+
+/* Card Inner Content Structure */
+.card-inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Profile Avatar Frame
+   ========================================================================== */
+.avatar-wrapper {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.avatar-frame {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  border-radius: var(--radius-avatar);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 
+    0 12px 28px -6px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  transform: scale(1.02);
+}
+
+/* Subtle rim light accent around avatar */
+.avatar-accent-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 30px;
+  background: radial-gradient(circle at 75% 20%, rgba(167, 139, 250, 0.35), transparent 70%);
+  filter: blur(10px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Identity & Positioning Typography
+   ========================================================================== */
+.person-name {
+  font-size: clamp(1.45rem, 5.5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.person-title {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent-title);
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, #DDD6FE 0%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.positioning-statement {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 320px;
+  margin-bottom: 22px;
+  text-wrap: balance;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   Hero WhatsApp CTA
+   ========================================================================== */
+.cta-container {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.cta-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: var(--color-whatsapp-bg);
+  border-radius: var(--radius-button);
+  color: var(--color-whatsapp-text);
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.cta-whatsapp svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.cta-arrow {
+  margin-left: 2px;
+  transition: transform 200ms ease;
+}
+
+.cta-whatsapp:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Secondary Socials & Actions Bar
+   ========================================================================== */
+.socials-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.social-icon-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+.vcard-quick-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radius-chip);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-secondary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 200ms ease;
+}
+
+.vcard-quick-pill svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.vcard-quick-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+.vcard-quick-pill:active {
+  transform: scale(0.95);
+}
+
+/* ==========================================================================
+   Micro-Labels (Bottom Viewport Edges)
+   ========================================================================== */
+.micro-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 2px 2px 2px;
+  background: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+.micro-label {
+  font-size: 0.64rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #FFFFFF;
+  opacity: 0.35;
+  line-height: 1.2;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.micro-label--start {
+  text-align: left;
+}
+
+.micro-label--end {
+  text-align: right;
+}
+
+/* ==========================================================================
+   Desktop / Tablet Ambient Centering
+   ========================================================================== */
+@media (min-height: 800px) and (min-width: 480px) {
+  .nfc-card {
+    padding: 32px 28px 26px 28px;
+  }
+  
+  .avatar-frame {
+    width: 112px;
+    height: 112px;
+  }
+
+  .person-name {
+    font-size: 1.85rem;
+  }
+
+  .positioning-statement {
+    font-size: 0.95rem;
+    margin-bottom: 26px;
+  }
+}
+
+/* Small phone adjustment (e.g. iPhone SE / 375px height constrained) */
+@media (max-height: 680px) {
+  .app-container {
+    padding: calc(var(--sat) + 8px) 12px calc(var(--sab) + 8px) 12px;
+  }
+
+  .nfc-card {
+    padding: 18px 16px 16px 16px;
+  }
+
+  .avatar-frame {
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
+  }
+
+  .avatar-wrapper {
+    margin-bottom: 12px;
+  }
+
+  .person-name {
+    font-size: 1.38rem;
+    margin-bottom: 3px;
+  }
+
+  .person-title {
+    font-size: 0.76rem;
+    margin-bottom: 10px;
+  }
+
+  .positioning-statement {
+    font-size: 0.84rem;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  .cta-whatsapp {
+    padding: 12px 16px;
+    font-size: 0.92rem;
+  }
+
+  .social-icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+}

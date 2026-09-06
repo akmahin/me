@@ -1,0 +1,8 @@
+.DS_Store
+._*
+Thumbs.db
+*.psd
+node_modules/
+dist/
+.env
+.env.local
